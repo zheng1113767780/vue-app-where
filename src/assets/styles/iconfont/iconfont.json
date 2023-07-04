@@ -1,0 +1,30 @@
+{
+  "id": "4125753",
+  "name": "myvue-app1",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1256462",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "33987002",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "33987164",
+      "name": "下拉",
+      "font_class": "a-xiala2",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    }
+  ]
+}
