@@ -2,9 +2,16 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
   configureWebpack:{
-    resolve:{
-      alias:{
-        "styles":"src/assets/styles"
+    devServer:{
+      proxy:{
+        '/api':{
+          target:'http://localhost:8080/',
+          ws: true,
+          changeOrigin: true,
+          pathRewrite:{
+            '^/api': '/public/mock'
+          }
+        }
       }
     }
   }
