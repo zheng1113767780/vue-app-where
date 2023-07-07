@@ -1,13 +1,12 @@
 <template>
   <div>
-    <home-city></home-city>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HomeCity from './page/home/HomeCity.vue'
+
   export default {
-  components: { HomeCity },
     name:"App"
   }
 </script>

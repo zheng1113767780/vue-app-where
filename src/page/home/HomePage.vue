@@ -17,7 +17,7 @@ import HomeSwiper from './components/HomeSwiper.vue'
 import HomeWeekend from './components/HomeWeekend.vue'
 export default {
     components: { CityHeader, HomeSwiper, HomeIcons, HomeRecommend, HomeWeekend },
-    name: "HomeCity",
+    name: "HomePage",
     data() {
         return {
             city: "",
