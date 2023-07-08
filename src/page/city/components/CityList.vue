@@ -5,14 +5,15 @@
                 <div class="title border-topbottom">您的位置</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">北京</div>
+                        <div class="button">{{ this.city }}</div>
                     </div>
                 </div>
             </div>
             <div class="area">
                 <div class="title border-topbottom">热门城市</div>
                 <div class="button-list">
-                    <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
+                    <div class="button-wrapper" v-for="item of hotCities" :key="item.id"
+                        @click="handleCityClick(item.name)">
                         <div class="button">{{ item.name }}</div>
                     </div>
                 </div>
@@ -20,7 +21,8 @@
             <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
                 <div class="title border-topbottom">{{ key }}</div>
                 <div class="item-list">
-                    <div class="item" v-for="items of item" :key="items.id">{{ items.name }}</div>
+                    <div class="item" v-for="items of item" :key="items.id" @click="handleCityClick(items.name)">
+                        {{ items.name }}</div>
                 </div>
             </div>
         </div>
@@ -28,23 +30,36 @@
 </template>
 
 <script>
-import Better from 'better-scroll'
+import Bscroll from 'better-scroll'
+import  {mapState, mapMutations}  from 'vuex'
 export default {
     name: "CityList",
     props: ['cities', 'hotCities', 'letter'],
-    mounted() {
-        this.scroll = new Better(this.$refs.wrapper, {
-            observeDOM: true
-        })
+    computed:{
+        ...mapState(['city'])
     },
-    watch:{
-        letter(){
-            if(this.letter){
+    methods: {
+        handleCityClick(city) {
+            this.changeCity(city)
+            this.$router.push('/')
+        },
+        ...mapMutations(['changeCity'])
+    },
+    watch: {
+        letter() {
+            if (this.letter) {
                 const element = this.$refs[this.letter][0];
                 this.scroll.scrollToElement(element);
             }
         }
-    }
+    },
+    mounted() {
+        this.scroll = new Bscroll(this.$refs.wrapper, {
+            click: true,
+            taps: true,
+            observeDOM: true
+        })
+    },
 }
 </script>
 
