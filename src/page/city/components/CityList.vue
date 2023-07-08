@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="area" v-for="(item, key) of cities" :key="key">
+            <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
                 <div class="title border-topbottom">{{ key }}</div>
                 <div class="item-list">
                     <div class="item" v-for="items of item" :key="items.id">{{ items.name }}</div>
@@ -31,23 +31,31 @@
 import Better from 'better-scroll'
 export default {
     name: "CityList",
-    props: ['cities', 'hotCities'],
+    props: ['cities', 'hotCities', 'letter'],
     mounted() {
-        this.scroll = new Better(this.$refs.wrapper,{
-            observeDOM:true
+        this.scroll = new Better(this.$refs.wrapper, {
+            observeDOM: true
         })
+    },
+    watch:{
+        letter(){
+            if(this.letter){
+                const element = this.$refs[this.letter][0];
+                this.scroll.scrollToElement(element);
+            }
+        }
     }
 }
 </script>
 
 <style lang="stylus" scoped>
-// .border-topbottom
-//  &:before
-//   content: ""
-//   border-color: #777;
-//  &:after
-//   content: ""
-//   border-color: #777;
+.border-topbottom
+ &:before
+  content: ""
+  border-color: #777;
+ &:after
+  content: ""
+  border-color: #777;
 .list
  position: absolute;
  overflow: hidden;

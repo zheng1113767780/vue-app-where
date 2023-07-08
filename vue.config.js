@@ -9,7 +9,7 @@ module.exports = defineConfig({
           ws: true,
           changeOrigin: true,
           pathRewrite:{
-            '^/api': '/public/mock'
+            '^/api': '/mock'
           }
         }
       }

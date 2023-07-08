@@ -2,8 +2,8 @@
     <div>
         <header-city></header-city>
         <city-search></city-search>
-        <city-list :cities="cities" :hotCities="hotCities"></city-list>
-        <city-alphabet :cities="cities"></city-alphabet>
+        <city-list :cities="cities" :hotCities="hotCities" :letter="letter"></city-list>
+        <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet>
     </div>
 </template>
 
@@ -16,28 +16,32 @@ import HeaderCity from './components/HeaderCity.vue'
 export default {
     name: "HomeCity",
     components: { HeaderCity, CitySearch, CityList, CityAlphabet },
-    data(){
+    data() {
         return {
-            cities:{},
-            hotCities:[]
+            cities: {},
+            hotCities: [],
+            letter:""
         }
     },
-    methods:{
-        getCityInfo(){
+    methods: {
+        getCityInfo() {
             axios.get('mock/city.json')
-            .then(res=>{
-                res = res.data
-                if(res.ret && res.data){
-                    const data = res.data;
-                    this.cities = data.cities;
-                    this.hotCities = data.hotCities;
-                }
-            })
+                .then(res => {
+                    res = res.data
+                    if (res.ret && res.data) {
+                        const data = res.data;
+                        this.cities = data.cities;
+                        this.hotCities = data.hotCities;
+                    }
+                })
+        },
+        handleLetterChange(letter) {
+            this.letter = letter
         }
     },
-    mounted(){
+    mounted() {
         this.getCityInfo()
-    }
+    },
 }
 
 </script>
