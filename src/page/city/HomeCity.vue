@@ -4,6 +4,9 @@
         <city-search></city-search>
         <city-list :cities="cities" :hotCities="hotCities" :letter="letter"></city-list>
         <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet>
+        <city-search :cities="cities"></city-search>
+        <city-list :cities="cities" :hotCities="hotCities"></city-list>
+        <city-alphabet :cities="cities"></city-alphabet>
     </div>
 </template>
 
@@ -20,7 +23,7 @@ export default {
         return {
             cities: {},
             hotCities: [],
-            letter:""
+            letter: ""
         }
     },
     methods: {
