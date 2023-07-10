@@ -8,24 +8,27 @@ Vue.use(VueRouter);
 
 const routes = [
     {
-        path:'/',
-        name:'home',
-        component:HomePage
+        path: '/',
+        name: 'home',
+        component: HomePage
     },
     {
-        path:'/city',
-        name:"city",
-        component:HomeCity
+        path: '/city',
+        name: "city",
+        component: HomeCity
     },
     {
-        path:'/detail/:id',
-        name:'detail',
-        component:DetailHome
+        path: '/detail/:id',
+        name: 'detail',
+        component: DetailHome
     }
 ];
 const router = new VueRouter({
-    mode:"history",
-    base:process.env.BASE_URL,
+    mode: "history",
+    base: process.env.BASE_URL,
     routes,
+    scrollBehavior() {
+        return { x: 0, y: 0 }
+    }
 })
 export default router
