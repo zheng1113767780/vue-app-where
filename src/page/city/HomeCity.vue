@@ -21,12 +21,12 @@ export default {
         return {
             cities: {},
             hotCities: [],
-            letter: ""
+            letter: "",
         }
     },
     methods: {
         getCityInfo() {
-            axios.get('mock/city.json')
+            axios.get('/api/city.json')
                 .then(res => {
                     res = res.data
                     if (res.ret && res.data) {
